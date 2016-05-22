@@ -19,7 +19,9 @@ class Cfdef::Driver
         }.merge(distribution),
       }
 
-      @client.create_distribution(params)
+      resp = @client.create_distribution(params)
+
+      log(:info, "Distribution `#{resp.distribution.id}` is created", color: :cyan)
     end
   end
 
