@@ -25,7 +25,7 @@ Or install it yourself as:
 ```sh
 export AWS_ACCESS_KEY_ID='...'
 export AWS_SECRET_ACCESS_KEY='...'
-cfdef -e -o Cffile  # export CloudFront
+cfdef -e -o CFfile  # export CloudFront
 vi CFfile
 cfdef -a --dry-run
 cfdef -a            # apply `CFfile`
@@ -185,3 +185,6 @@ $ cfdef -a
 ## ToDo
 
 * Support Streaming Distribution
+
+## Similar tools
+* [Codenize.tools](http://codenize.tools/)
