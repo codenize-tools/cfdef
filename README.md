@@ -62,36 +62,34 @@ distribution "EXAMPLEID" do
   end
   origins do
     quantity 2
-    items [
-      _{
-        id "Custom-ehxample.cpm"
-        domain_name "example.cpm"
-        origin_path ""
-        custom_headers do
-          quantity 0
+    items do |*|
+      id "Custom-ehxample.cpm"
+      domain_name "example.cpm"
+      origin_path ""
+      custom_headers do
+        quantity 0
+      end
+      custom_origin_config do
+        http_port 80
+        https_port 443
+        origin_protocol_policy "http-only"
+        origin_ssl_protocols do
+          quantity 3
+          items "TLSv1", "TLSv1.1", "TLSv1.2"
         end
-        custom_origin_config do
-          http_port 80
-          https_port 443
-          origin_protocol_policy "http-only"
-          origin_ssl_protocols do
-            quantity 3
-            items "TLSv1", "TLSv1.1", "TLSv1.2"
-          end
-        end
-      },
-      _{
-        id "S3-example"
-        domain_name "example.s3.amazonaws.com"
-        origin_path ""
-        custom_headers do
-          quantity 0
-        end
-        s3_origin_config do
-          origin_access_identity ""
-        end
-      }
-    ]
+      end
+    end
+    items do |*|
+      id "S3-example"
+      domain_name "example.s3.amazonaws.com"
+      origin_path ""
+      custom_headers do
+        quantity 0
+      end
+      s3_origin_config do
+        origin_access_identity ""
+      end
+    end
   end
   default_cache_behavior do
     target_origin_id "S3-example"
