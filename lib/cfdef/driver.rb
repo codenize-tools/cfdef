@@ -21,7 +21,7 @@ class Cfdef::Driver
 
       resp = @client.create_distribution(params)
 
-      log(:info, "Distribution `#{resp.distribution.id}` is created", color: :cyan)
+      log(:info, "Distribution `#{resp.distribution.id}` has been created", color: :cyan)
     end
   end
 
