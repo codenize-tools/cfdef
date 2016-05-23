@@ -75,7 +75,7 @@ distribution "EXAMPLEID" do
         origin_protocol_policy "http-only"
         origin_ssl_protocols do
           quantity 3
-          items "TLSv1", "TLSv1.1", "TLSv1.2"
+          items ["TLSv1", "TLSv1.1", "TLSv1.2"]
         end
       end
     end
@@ -110,10 +110,10 @@ distribution "EXAMPLEID" do
     min_ttl 0
     allowed_methods do
       quantity 2
-      items "GET", "HEAD"
+      items ["GET", "HEAD"]
       cached_methods do
         quantity 2
-        items "GET", "HEAD"
+        items ["GET", "HEAD"]
       end
     end
     smooth_streaming false
