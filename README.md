@@ -47,6 +47,7 @@ Usage: cfdef [options]
     -o, --output FILE
         --split
         --target-origin ID_RGX
+        --use-braces
         --no-color
         --debug
 ```

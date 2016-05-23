@@ -37,15 +37,16 @@ def parse_options(argv)
     options[:aws][:credentials][:path] = v
   end
 
-  opt.on('-a', '--apply')                {    options[:mode]    = :apply        }
-  opt.on('-f', '--file FILE')            {|v| options[:file]    = v             }
-  opt.on(''  , '--dry-run')              {    options[:dry_run] = true          }
-  opt.on('-e', '--export')               {    options[:mode]    = :export       }
-  opt.on('-o', '--output FILE')          {|v| options[:output]  = v             }
-  opt.on(''  , '--split')                {    options[:split]   = :true         }
-  opt.on(''  , '--target-origin ID_RGX') {|v| options[:target]  = Regexp.new(v) }
-  opt.on(''  , '--no-color')             {    options[:color]   = false         }
-  opt.on(''  , '--debug')                {    options[:debug]   = true          }
+  opt.on('-a', '--apply')                {    options[:mode]       = :apply        }
+  opt.on('-f', '--file FILE')            {|v| options[:file]       = v             }
+  opt.on(''  , '--dry-run')              {    options[:dry_run]    = true          }
+  opt.on('-e', '--export')               {    options[:mode]       = :export       }
+  opt.on('-o', '--output FILE')          {|v| options[:output]     = v             }
+  opt.on(''  , '--split')                {    options[:split]      = true          }
+  opt.on(''  , '--target-origin ID_RGX') {|v| options[:target]     = Regexp.new(v) }
+  opt.on(''  , '--use-braces')           {    options[:use_braces] = true          }
+  opt.on(''  , '--no-color')             {    options[:color]      = false         }
+  opt.on(''  , '--debug')                {    options[:debug]      = true          }
 
   opt.parse!(argv)
 

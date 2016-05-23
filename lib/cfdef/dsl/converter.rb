@@ -30,12 +30,22 @@ class Cfdef::DSL::Converter
   end
 
   def output_distribution(dist_id, distribution)
-    dist_conf = Dslh.deval(distribution, initial_depth: 1, force_dump_braces: true).strip
+    dslh_opts = {initial_depth: 1, force_dump_braces: true}
+    dslh_opts[:use_braces_instead_of_do_end] = true if @options[:use_braces]
+    dist_conf = Dslh.deval(distribution, dslh_opts).strip
 
-    <<-EOS
+    if @options[:use_braces]
+      <<-EOS
+distribution(#{dist_id.inspect}) {
+  #{dist_conf}
+}
+      EOS
+    else
+      <<-EOS
 distribution #{dist_id.inspect} do
   #{dist_conf}
 end
-    EOS
+      EOS
+    end
   end
 end
