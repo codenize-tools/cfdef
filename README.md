@@ -181,6 +181,89 @@ $ cat CFfile
 $ cfdef -a
 ```
 
+## Use braces
+
+Export with `--use-braces` option.
+
+```ruby
+distribution("EXAMPLEID") {
+  aliases {
+    quantity 0
+  }
+  origins {
+    quantity 1
+    items {|*|
+      id "Custom-example.com"
+      domain_name "example.com"
+      origin_path ""
+      custom_headers {
+        quantity 0
+      }
+      custom_origin_config {
+        http_port 80
+        https_port 443
+        origin_protocol_policy "http-only"
+        origin_ssl_protocols {
+          quantity 3
+          items ["TLSv1", "TLSv1.1", "TLSv1.2"]
+        }
+      }
+    }
+  }
+  default_cache_behavior {
+    target_origin_id "Custom-example.com"
+    forwarded_values {
+      query_string false
+      cookies {
+        forward "none"
+      }
+      headers {
+        quantity 0
+      }
+    }
+    trusted_signers {
+      enabled false
+      quantity 0
+    }
+    viewer_protocol_policy "allow-all"
+    min_ttl 0
+    allowed_methods {
+      quantity 2
+      items ["GET", "HEAD"]
+      cached_methods {
+        quantity 2
+        items ["GET", "HEAD"]
+      }
+    }
+    smooth_streaming false
+    default_ttl 86400
+    max_ttl 31536000
+    compress false
+  }
+  cache_behaviors {
+    quantity 0
+  }
+  custom_error_responses {
+    quantity 0
+  }
+  comment ""
+  price_class "PriceClass_All"
+  enabled true
+  viewer_certificate {
+    cloud_front_default_certificate true
+    minimum_protocol_version "SSLv3"
+    certificate_source "cloudfront"
+  }
+  restrictions {
+    geo_restriction {
+      restriction_type "none"
+      quantity 0
+    }
+  }
+  web_acl_id ""
+}
+```
+
 ## ToDo
 
 * Support Streaming Distribution
