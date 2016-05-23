@@ -30,7 +30,7 @@ class Cfdef::DSL::Converter
   end
 
   def output_distribution(dist_id, distribution)
-    dist_conf = Dslh.deval(distribution, initial_depth: 1).strip
+    dist_conf = Dslh.deval(distribution, initial_depth: 1, force_dump_braces: true).strip
 
     <<-EOS
 distribution #{dist_id.inspect} do

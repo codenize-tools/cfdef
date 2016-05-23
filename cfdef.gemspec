@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'aws-sdk', '~> 2.3.0'
   spec.add_dependency 'diffy'
-  spec.add_dependency 'dslh', '>= 0.3.4'
+  spec.add_dependency 'dslh', '>= 0.3.5'
   spec.add_dependency 'term-ansicolor'
 
   spec.add_development_dependency 'bundler'
