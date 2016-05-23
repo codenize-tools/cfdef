@@ -100,7 +100,9 @@ def main(argv)
       exported.fetch(:distributions).each do |dist_id, distribution|
         next unless distribution
 
-        filename = "#{dist_id}.cf"
+        origin_ids = distribution.fetch(:origins).fetch(:items).map {|i| i[:id] }.sort
+        filename_without_ext = origin_ids.unshift(dist_id).join('_').gsub(/[^-.\w]+/, '_').gsub(/__+/, '_')
+        filename = "#{filename_without_ext}.cf"
         requires << filename
         cf_file = File.join(dir, filename)
 
