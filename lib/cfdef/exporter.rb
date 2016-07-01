@@ -1,6 +1,8 @@
 class Cfdef::Exporter
   include Cfdef::Utils::Helper
 
+  CONCURRENCY = 8
+
   def initialize(client, options = {})
     @client = client
     @options = options
@@ -21,7 +23,7 @@ class Cfdef::Exporter
 
     distribution_ids = @client.list_distributions.flat_map(&:distribution_list).flat_map(&:items).map(&:id)
 
-    distribution_ids.each do |distribution_id|
+    Parallel.each(distribution_ids, in_threads: CONCURRENCY) do |distribution_id|
       resp = @client.get_distribution_config(id: distribution_id)
       distribution = resp.distribution_config.to_h
       distribution.delete(:caller_reference)
