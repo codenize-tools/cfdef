@@ -19,10 +19,12 @@ class Cfdef::Exporter
   def export_distributions
     result = {}
 
-    distributions = @client.list_distributions.flat_map(&:distribution_list).flat_map(&:items).map(&:to_h)
+    distribution_ids = @client.list_distributions.flat_map(&:distribution_list).flat_map(&:items).map(&:id)
 
-    distributions.each do |distribution|
-      distribution_id = distribution.fetch(:id)
+    distribution_ids.each do |distribution_id|
+      resp = @client.get_distribution_config(id: distribution_id)
+      distribution = resp.distribution_config.to_h
+      distribution.delete(:caller_reference)
       origin_ids = distribution.fetch(:origins).fetch(:items).map {|i| i[:id] }.sort
       next unless origin_ids.any?{|i| matched?(i) }
       result[distribution_id] = remove_status!(distribution)
