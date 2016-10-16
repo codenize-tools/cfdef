@@ -1,6 +1,6 @@
 # Cfdef
 
-Repol is a tool to manage CloudFront.
+Cfdef is a tool to manage CloudFront.
 
 It defines the state of CloudFront using DSL, and updates CloudFront according to DSL.
 
