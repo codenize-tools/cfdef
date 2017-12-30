@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Cfdef is a tool to manage CloudFront.}
   spec.description   = %q{Cfdef is a tool to manage CloudFront.}
-  spec.homepage      = 'https://github.com/winebarrel/cfdef'
+  spec.homepage      = 'https://github.com/codenize-tools/cfdef'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
