@@ -1,4 +1,4 @@
-require 'aws-sdk'
+require 'aws-sdk-cloudfront'
 require 'diffy'
 require 'dslh'
 require 'json'
